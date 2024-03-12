@@ -1,0 +1,35 @@
+inputFiles:
+[number] - insert this value
+"test"   - stop insert and use output1
+[number] ...
+"test"   - stop insert and use output2
+
+outputFiles:
+[number] - key that is supposed to be in this node
+"0"     - next values are part of the next node on this level
+"next"   - next values are part of the next lower level 
+"end"    - end of the tree
+
+Degree = 2 Tests: FILE-"TreeDegree2Test"
+input_insert corresponds to output..1 and output..2;
+input_delete has to be used after input_insert
+and corresponds to output3 bis output
+
+output6: 3* fuse
+output7: (fuse and InnerNode-transferLeftSibling) and (simple delete and change key in parent)
+output8: (simple delete) and (fuse and InnerNode-transferRightSibling)
+
+Degree = 3 Tests: FILE-"TreeDegree3Test"
+inputDegree3_insert corresponds to output..1 and output..2;
+output3: simple delete and change Key in root
+output4: transferRightSibling LeafNode and change Key in root
+output5: transferLeftSibling Leaf Node (delete 40) -> leftSibling has to be correct; Fuse LeafNodes and transferLeftSibling InnerNode
+output7: transferLeftSibling LeafNode (d16); fuse Leaf (d14); transferLeft Leaf (d12)
+output9: merge Leaf (d5); Fuse LeafNodes and transferRightSibling InnerNode
+output10: transLeft Leaf (d25); merge Leaf and merge Inner
+output14: delete non-existing key
+output15: delete so that root is empty
+
+Degree = 4: FILE-"TreeDegree4Test"
+inputDegree4_insert corresponds to output..1 and output..2;
+output3: fuse Leaf and fuse Inner
